@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}messages | instagram{% endblock title %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "css/message.css" %}">
+{% endblock stylesheet %}
+
+{% block container %}
+
+<div class="chat-box">
+    <div class="chat-list">
+       
+        <div class="list">
+            <ul class="mul">
+                <li class="mli" id="chatshower">
+                    <div class="img">
+                        <img src="https://th.bing.com/th/id/OIP.DzBlyLi5oo0RCww-wose6wAAAA?rs=1&pid=ImgDetMain" alt="User Image">
+                    </div>
+                    <div class="name">
+                        <span>Chat-box</span>
+                    </div>
+                </li>
+                <li class="mli" id="imagecreater">
+                    <div class="img">
+                        <img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/880233/1160/772/m1/fpnw/wm0/cover-.jpg?1451874414&s=f063a71697cd0ae235f8004525ee5f40" alt="User Image">
+                    </div>
+                    <div class="name" id="imagecreater">
+                        <span>Image-Creater</span>
+                    </div>
+                </li>
+                <!-- Add more users here -->
+            </ul>
+        </div>
+    </div>
+    <div class="chat-shower" id="chatshower">
+        <div class="messages">
+            {% if messages %}
+
+                    <div class="user-message">
+                        {{user_message}}
+                    </div>
+                    <div class="ai-message">
+                        {{messages}}
+                    </div>
+                   
+                    
+            
+            {% endif %}
+        </div>
+        <div class="message-image" id="message-image">
+            
+
+            <p class="question">
+                {{user_message}}
+
+            </p>
+            <p class="answer">
+                {{messages}}
+
+            </p>
+           
+
+        </div>
+        
+             <div class="message-input" id="messageinput">
+            <form action="" method="post" style="width: 100%;">
+                {% csrf_token %}
+                <input type="text" placeholder="Type a message..." name="message" style="width: 60%;">
+                <button type="submit">Send</button>
+                <button onclick="QuestionConver()" type="button"> convert</button>
+            </form>
+       
+        </div>
+    </div>
+
+    <div class="chat-shower imagecreater" id="imagecreater">
+       <div class="suggestions">
+        <div class="sugesstion" id="suggestion1">
+            <h1  class="throtitle">Title</h1>
+            <p class="thropara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, id.</p>
+        </div>
+        <div class="sugesstion" id="suggestion2">
+            <h1  class="throtitle">Title</h1>
+            <p class="thropara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, id.</p>
+        </div>
+        <div class="sugesstion" id="suggestion3">
+            <h1  class="throtitle">Title</h1>
+            <p class="thropara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, id.</p>
+        </div>
+        <div class="sugesstion" id="suggestion4">
+            <h1  class="throtitle">Title</h1>
+            <p class="thropara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, id.</p>
+        </div>
+        <div class="sugesstion" id="suggestion5">
+            <h1  class="throtitle">Title</h1>
+            <p class="thropara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, id.</p>
+        </div>
+        <div class="sugesstion" id="suggestion6">
+            <h1  class="throtitle">Title</h1>
+            <p class="thropara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, id.</p>
+        </div>
+       </div>
+       <div class="image-creater-input">
+     <input type="text" name="title" id="titleValue" class="title" placeholder="Enter Your Title Here" onkeyup="Titleup()">
+     <input type="text" name="" id="paraValue" class="para" placeholder="Enter Your vichar" onkeyup="Paraup()">
+       </div>
+    </div>
+</div>
+
+{% endblock container %}
+
+{% block js %}
+<script src="{% static "js/message.js" %}"></script>
+<script src="{% static "js/message.posts.js" %}"></script>
+<script src="{% static "js/dom-to-image.js" %}"></script>
+<script src="{% static "js/message.download.js" %}"></script>
+{% endblock js %}

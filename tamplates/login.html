@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 20px;
+      /* border-radius: 8px; */
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  */
+      border: 0.2px solid rgba(0, 0, 0, 0.278);
+      width: 400px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      color: #333;
+    }
+
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #666;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .form-group button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+
+    .left {
+     
+      width: 50%;
+      height: 100%;
+    }
+
+    .loginimage {
+      /* z-index: 12; */
+      border: 2px solid transparent;
+      border-radius: 6px;
+      width: 300px;
+      height: 500px;
+      object-fit: contain;
+    }
+
+
+
+
+
+
+
+    /* swiper css */
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+    }
+
+    .swiper-slide img {
+      /* transform: rotate(11deg); */
+      left: 33%;
+      position: relative;
+      /* display: block; */
+      width: 265px;
+      height: 558px;
+      /* width: 100%; */
+      object-fit: fill;
+      z-index: 2;
+      border: 18px solid black;
+      border-radius: 32px;
+      padding: 0px;
+    }
+
+    .backimg {
+
+      left: 17%;
+      border: 15px solid black;
+      border-radius: 22px;
+      width: 265px;
+      height: 588px;
+      position: relative;
+      bottom: 105%;
+
+    }
+    
+
+
+    ::placeholder {
+      font-size: 15px;
+    }
+
+    .header {
+      font-family: cursive;
+      padding: 30px;
+    }
+
+    .midspan {
+      width: 20px;
+      position: relative;
+      top: 5px;
+    }
+
+    .or {
+      display: flex;
+      flex-direction: row;
+    }
+footer{
+  position: absolute;
+  top: 700px;
+  /* margin-top: 150%; */
+}
+
+footer span{
+  color: rgba(128, 128, 128, 0.568);
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 13px;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="left">
+
+
+
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="{% static 'images/insa2.png' %}">
+        </div>
+        <div class="swiper-slide">
+          <img src="{% static 'images/inst3.png' %}" />
+        </div>
+        <div class="swiper-slide">
+          <img src="{% static 'images/instaphoto.png' %}" />
+        </div>
+
+      </div>
+
+    </div>
+    <img src="{%static 'images/insta4.png' %}" alt="" class="backimg">
+    
+
+  </div>
+
+
+
+
+<div class="login-container">
+    <h2 class="header"><i data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://static.cdninstagram.com/rsrc.php/v3/yM/r/8n91YnfPq0s.png&quot;); background-position: 0px -52px; background-size: auto; width: 175px; height: 51px; background-repeat: no-repeat; display: inline-block;"></i></h2>
+    <form action="#" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <!-- <label for="username">Username:</label> -->
+        <input type="text" id="username" name="username" placeholder="Phone number,username or emailid " required>
+      </div>
+
+
+      <div class="form-group">
+        <!-- <label for="password">Password:</label> -->
+        <input type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="form-group">
+        
+  {% if messages %}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+    <strong>Wrong:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Login" class="btn-primary">
+      </div>
+
+      <div class="form-group">
+       
+      </div>
+</form>
+      <div class="or">
+        <hr style="width: 45%;">
+        <span class="midspan">or</span>
+        <hr style="width: 40%;">
+
+      </div>
+      <button class="btn-primary">Login with Facebook</button>
+      <div class="regi">
+        <span>You have't account <a href="{% url "signup" %}">Register</a></span>
+        </div>
+</div>
+<!-- <br> -->
+
+<footer>
+  <span id="sp1" class="sp">Meta</span>
+  <span id="sp2" class="sp">About</span>
+  <span id="sp3" class="sp">Blogs</span>
+  <span id="sp4" class="sp">JObs</span>
+  <span id="sp5" class="sp">API</span>
+  <span id="sp6" class="sp">Privacy</span>
+  <span id="sp7" class="sp">Terms</span>
+  <span id="sp8" class="sp">Location</span>
+  <span id="sp9" class="sp">Instagram lite</span>
+  <span id="sp10" class="sp">thred</span>
+  <span id="sp10" class="sp">meta varifiction</span>
+  <span id="sp10" class="sp">non-user</span>
+  <span id="sp10" class="sp">help</span>
+  <!-- <p>English</p> -->
+</footer>
+
+
+      <!-- Swiper JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+      <!-- Initialize Swiper -->
+      <script>
+        var swiper = new Swiper(".mySwiper", {
+          spaceBetween: 30,
+          effect: "fade",
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          autoplay: {
+            delay: 2000, // milliseconds between slides
+            disableOnInteraction: false, // enables/disables autoplay on user interaction
+          },
+        });
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "css/profile.css" %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+{% endblock stylesheet %}
+
+{% block container %}
+
+{% if isPrivet %}
+
+<div class="mainbox">
+    <div class="profile-display-box">
+        <img src="{{username.profile.profile_image.url}}" alt="">
+    </div>
+    <div class="deatails-box">
+        <div class="user-name-box">
+            <p class="username">{{username}}</p>
+            {% if isFollow%}
+        <a href="{% url "unfollow" userId %}">   <button class="follow">Requested</button></a>
+            {% else %}
+        <a href="{% url "follow" userId %}">  <button class="follow">Follow</button></a>
+            {% endif %}
+        </div>
+        <div class="user-details-box">
+            
+            <div class="details">
+                <p class="post-item"><strong>post</strong></p>
+                <p class="post-number">{{userpostcount}}</p>
+            </div>
+            <div class="details" onclick="ShowFollower()">
+                <p class="follower-item">Followers</p>
+                <p class="follower-number">{{userFollowingcount}}</p>
+            </div>
+            <div class="details" onclick="ShowFollowing()">
+                <p class="following-item">Following</p>
+                <p class="following-number">{{userFollowercount}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="post-save-container">
+    <p class="post" onclick="post()">Post</p>
+    <p class="save" onclick="save()">Save</p>
+</div>
+<hr>
+<div class="Post-Container" id="pc">
+    <p style="text-align: center; margin: 1px auto;">This Account Is Privet</p>
+
+</div>
+
+
+<div class="Save-Container" id="sc">
+   <p style="text-align: center;">This Account is Privet</p>
+
+</div>
+
+
+{% else %}
+
+        <div id="show_Following">
+            <div id="boxHeader">
+                <button id="closeFollowing" onclick="closeFollowing()">Close</button>
+            </div>
+            <div id="listOfUsersFollowing">
+                {% for users in userFollower  %}
+                <a href="{% url "userprofile" users.follower.id %}">
+                    <div class="user">
+                        <p>{{users.follower}}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            
+            </div>
+        </div>
+
+        <div id="show_Followers">
+            <div id="boxHeader">
+                <button id="closeFollowers" onclick="closeFollowers()">Close</button>
+            </div>
+            <div id="listOfUsersFollowers">
+                {% for users in userFollowing  %}
+                <a href="{% url "userprofile" users.following.id %}">
+                    <div class="user">
+                        <p>{{users.following}}</p>
+                    </div>
+                </a>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+        <div class="mainbox">
+            <div class="profile-display-box">
+                <img src="{{username.profile.profile_image.url}}" alt="">
+            </div>
+            <div class="deatails-box">
+                <div class="user-name-box">
+                    <p class="username">{{username}}</p>
+                    {% if isFollow%}
+                <a href="{% url "unfollow" userId %}">   <button class="follow">Unfollow</button></a>
+                    {% else %}
+                <a href="{% url "follow" userId %}">  <button class="follow">Follow</button></a>
+                    {% endif %}
+                </div>
+                <div class="user-details-box">
+                    
+                    <div class="details">
+                        <p class="post-item"><strong>post</strong></p>
+                        <p class="post-number">{{userpostcount}}</p>
+                    </div>
+                    <div class="details" onclick="ShowFollower()">
+                        <p class="follower-item">Followers</p>
+                        <p class="follower-number">{{userFollowingcount}}</p>
+                    </div>
+                    <div class="details" onclick="ShowFollowing()">
+                        <p class="following-item">Following</p>
+                        <p class="following-number">{{userFollowercount}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-save-container">
+            <p class="post" onclick="post()">Post</p>
+            <p class="save" onclick="save()">Save</p>
+        </div>
+        <hr>
+        <div class="Post-Container" id="pc">
+            {% for userpost in userpost  %}
+            <div class="posts">
+                <img src="{{userpost.post_img.url}}" alt="">
+            </div>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="Save-Container" id="sc">
+            {% for save in save %}
+            <div class="saves">
+                <img src="{{save.post.post_img.url}}" alt="">
+            </div>
+            {% endfor %}
+        
+        </div>
+{% endif %}
+
+{% endblock container %}
+
+{% block js %}
+<script>
+    const save = () =>{
+        let save_container = document.getElementById("sc");
+        save_container.style.display = "flex";
+        let post_container = document.getElementById("pc");
+        post_container.style.display ="none"
+    }
+
+    const post = () =>{
+    
+        let save_container = document.getElementById("sc");
+        save_container.style.display = "none";
+        let post_container = document.getElementById("pc");
+        post_container.style.display ="flex"
+    
+    }
+
+    function closeFollowing()
+    {
+        let Continaer = document.getElementById('show_Following');
+        Continaer.style.display = 'none';
+    }
+
+    function closeFollowers()
+    {
+        let continaer = document.getElementById('show_Followers');
+        continaer.style.display='none';
+    }
+
+    function ShowFollower()
+    {
+        let continaer = document.getElementById('show_Followers')
+        continaer.style.display ='flex'
+    }
+
+    function ShowFollowing()
+    {
+        let continer = document.getElementById('show_Following')
+        continer.style.display ='flex'
+    }
+</script>
+{% endblock js %}

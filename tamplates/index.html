@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Instagram{% endblock title %}
+{% block stylesheet %}
+<!-- <link rel="stylesheet" href="{%static "css/index.css" %}"> -->
+<link rel="stylesheet" href="{% static "css/index.css" %}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+{% endblock stylesheet %}
+
+{% block container %}
+<!-- <div id="storySection">
+
+    <div id="UserStory">
+        <img src="" alt="">
+    </div>
+</div> -->
+<div class="Posts">
+    {% for usepost in userpost %}
+    <div class="post">
+        <div id="post-header">
+            <div id="proImge"> <img src="{{usepost.user.profile.profile_image.url}}"
+                    alt="" id="profileImage"></div>
+            <a href="{% url "userprofile" usepost.user.id %}" style="color: black;">
+                <p>{{usepost.user}}</p>
+            </a>
+
+
+
+
+        </div>
+        <img src="{{usepost.post_img.url}}" alt="" class="post-image">
+        <div class="buttons">
+
+            <a href="{% url "like" usepost.id %}"> <button class="btn"><i class="fas fa-heart"></i>
+                    {{usepost.like_count}}</button> </a>
+
+            <button class="btn comment-btn"><i class="fas fa-comment"></i></button>
+            <a href="{% url "save" usepost.id %}"> <button class="btn"><i class="fas fa-bookmark"></i></button></a>
+        </div>
+        <a href="{% url "hastage" usepost.id %}">
+            <p class="caption"> {{usepost.hastage}}</p>
+        </a>
+        <p class="caption">{{usepost.caption}}</p>
+        <div class="comment-container">
+            <div class="comments">
+
+            </div>
+            <textarea class="comment-input" placeholder="Add a comment..."></textarea>
+            <button class="btn post-comment-btn">Post</button>
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+
+
+
+</div>
+{% endblock container %}
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+    integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="{% static "js/index.js" %}"></script>
+<script src="{% static "js/index.animation.js" %}"></script>
+
+<script>
+    let bodyClassName = localStorage.getItem('bodyclassname')
+    if (bodyClassName == 'sigma-body' || bodyClassName=='dark-body') {
+        let para = document.querySelectorAll('p');
+        para.forEach((element) => {
+            element.style.color = 'white'
+        })
+    }
+
+
+    else 
+    {
+        let para = document.querySelectorAll('p');
+        para.forEach((element) => {
+            element.style.color = 'black'
+        })
+
+    }
+</script>
+{% endblock js %}

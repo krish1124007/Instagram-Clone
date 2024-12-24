@@ -1,0 +1,151 @@
+body{
+    overflow-x: hidden;
+}
+
+#storySection {
+    /* width: 100%; Full-width responsive layout */
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth; /* Smooth scrolling for better UX */
+}
+
+#UserStory {
+    border: 1px solid rgb(12, 12, 12);
+    width: 60px; /* Absolute size for consistency */
+    height: 60px;
+    border-radius: 50%; /* Perfectly round */
+    display: flex;
+    cursor: pointer;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+.Posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post{
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    
+    border-radius: 8px;
+    width: 40%;
+    margin: 20px 0;
+    /* height: 400px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+#post-header{
+   display: flex;
+    
+}
+
+#post-header p 
+{
+    cursor: pointer;
+}
+
+#proImge
+{
+    width:  30%;
+    height: 50%;
+
+    border: 1px solid transparent;
+    border-radius: 43px;
+}
+#profileImage
+{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border: 1px solid transparent;
+    border-radius: 43px;
+}
+
+.post-image {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.caption {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.buttons {
+    display: flex;
+    justify-content: left;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+}
+
+.btn:hover {
+    color: #000;
+}
+
+.comment-container {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.comment-container.active {
+    display: block;
+}
+
+.comments {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.comment-input {
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+}
+
+.post-comment-btn {
+    background-color: #3897f0;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.post-comment-btn:hover {
+    background-color: #2878c0;
+}
+
+
+@media (min-width: 250px) and (max-width: 600px) {
+    .post {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 80%;
+        margin: 20px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    } 
+}

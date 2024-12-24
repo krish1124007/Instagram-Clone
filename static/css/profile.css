@@ -1,0 +1,256 @@
+/* Base styles */
+body {
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main container */
+.mainbox {
+    width: 60%;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-display-box {
+    width: 30%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-display-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid transparent;
+    border-radius: 50px;
+}
+
+.details-box {
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-name-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    /* border: 1px solid black; */
+    position: relative;
+    top: 30px;
+}
+
+.user-name-box button {
+    background: linear-gradient(135deg, #4a90e2, #007bff);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-name-box button:hover {
+    background: linear-gradient(135deg, #007bff, #4a90e2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.user-details-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.details {
+    width: 33%;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.details:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.post-save-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.post-save-container .post, 
+.post-save-container .save {
+    width: 50%;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-save-container .post:hover, 
+.post-save-container .save:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.Post-Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.Save-Container{
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.Post-Container .posts, 
+.Save-Container .saves {
+    width: 31%;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.posts img, .saves img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.follow {
+    background: linear-gradient(135deg, #4a90e2, #007bff);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.follow:hover {
+    background: linear-gradient(135deg, #007bff, #4a90e2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+/* Shared styles for both containers */
+#show_Following, #show_Followers {
+    width: 30%;
+    height: 300px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0); /* Center horizontally */
+    border: 1px solid black;
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Scrollbar for vertical overflow */
+    overflow-x: hidden; /* Avoid horizontal overflow */
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Header section */
+#boxHeader {
+    width: 100%;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: flex-end; /* Align button to the right */
+}
+
+/* Close buttons */
+#closeFollowing, #closeFollowers {
+    border: none;
+    background-color: red;
+    color: #fff;
+    border-radius: 50%;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+#closeFollowing:hover, #closeFollowers:hover {
+    background-color: darkred;
+}
+
+/* List of users */
+#listOfUsersFollowing, #listOfUsersFollowers {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between users */
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.user:hover {
+    background-color: #eaeaea;
+    transform: translateY(-2px);
+}
+
+.user p {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .mainbox {
+        width: 98%;
+        flex-direction: column;
+    }
+
+    .profile-display-box img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .details p {
+        font-size: 12px;
+    }
+}

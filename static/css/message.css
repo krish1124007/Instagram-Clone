@@ -1,0 +1,246 @@
+.chat-box {
+    display: flex;
+    height: 90vh;
+    margin: 20px auto;
+    min-width: 70%;
+    max-width: 1000px;
+    background-color: #ffffff00;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chat-list {
+    
+    width: 30%;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fafafa68;
+}
+
+
+
+.list {
+    margin-top: 20px;
+}
+
+.mul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.mli {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+
+
+.mli:hover {
+    background-color: #efefef;
+}
+
+.img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.chat-shower {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9b4;
+}
+
+
+.messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    max-width: 70%;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.5;
+    display: inline-block;
+}
+
+
+.message-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    /* background-color: #fff; */
+}
+
+.message-input input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    margin-right: 10px;
+}
+
+.message-input button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #0095f6;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+/*this is for image-creater*/
+.image-creater {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    display: none;
+    flex-direction: column;
+}
+
+.imagecreater
+{
+    display: none;
+}
+
+.image-creater-input{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid black; */
+    height: 20%;
+    justify-content: space-around;
+}
+
+
+.image-creater-input input{
+    border: 1px solid transparent;
+    border-radius: 12px;
+    height: 30px;
+}
+ ::placeholder
+{
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+.suggestions{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sugesstion{
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 10px;
+    text-align: center;
+    
+}
+.sugesstion:hover
+{
+    width: 31.1%;
+    cursor: pointer;
+
+}
+.sugesstion h1{
+    text-align: center;
+}
+
+#suggestion1
+{
+    background-color: black;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#suggestion2
+{
+    background-color: rgb(226, 55, 55);
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#suggestion3
+{
+    background-color: white;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#suggestion4
+{
+    background-color: yellowgreen;
+    color: black;
+    font-family: fantasy;
+}
+#suggestion5
+{
+    background-color: aqua;
+    color: black;
+    font-family: monospace;
+}
+
+.message-image
+{
+    display: none;
+    background-color: black;
+    min-height: 200px;
+    color: white;
+}
+
+
+.ai-message{
+    /* border: 2px solid black; */
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+    height: 40px;
+}
+
+.user-message{
+    margin-top: 20px;
+    /* border: 2px solid red; */
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
+}
+

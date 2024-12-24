@@ -1,0 +1,205 @@
+/* General button styles */
+button {
+    cursor: pointer;
+    background: linear-gradient(135deg, #4a91e236, #007bff3d);
+    /* backdrop-filter: blur(0.5);  */
+
+    color: #1d1d1d;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #a777e3, #6e8efb);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific styles for different button containers */
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+/* Styles for the search bar */
+.search {
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    padding: 10px;
+}
+
+.search input {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.352);
+    border-top-left-radius: 12px;
+}
+.search button{
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 8px;
+    margin: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    
+}
+/* CSS for posts */
+.Posts {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.post {
+    width: 32%;
+    height: 300px;
+    margin-top: 10px;
+    cursor: pointer;
+
+}
+.post:hover #post_hover
+{
+    display: block;
+}
+#post_hover
+{
+    height: 300px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.699);
+    width: 30.5%;
+    border: 1px solid green;
+    display: none;
+
+
+}
+
+#post_hover p
+{
+    /* fon  */
+    font-size: 20px;
+    color: white;
+    margin-left: 60px;
+}
+#like_image
+{
+    width: 30%;
+    height: 40%;
+    object-fit:cover;
+    display: block;
+   /* margin: 10px auto;  */
+}
+
+.post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* CSS for account user */
+.Accounts {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.account {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    padding: 10px 20px;
+    /* width: 350px; */
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.username {
+    margin-left: 15px;
+}
+
+.uname {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+.unfollow-btn
+{
+    background-color: #c4cdd6;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+.follow-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.follow-btn:hover {
+    background-color: #0056b3;
+}
+
+/* CSS for reels */
+.Reels {
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid black;
+}
+
+.video {
+    width: 33%;
+    height: 300px;
+}
+
+.video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CSS for music */
+.Musics {
+    display: none;
+}
+
+/* Responsive media query */
+@media (min-width: 250px) and (max-width: 600px) {
+    .search {
+        width: 100%;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: row;
+        height: 30px;
+    }
+}

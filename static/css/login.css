@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+}
+.container {
+    display: flex;
+    width: 100%;
+    /* borde; */
+    /* border: 10px solid rgb(211, 74, 74); */
+
+}
+.form-container {
+    /* width: 50%; */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #ffdc80, #fc3d83, #4a68ef, #3dc7fc);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    /* border: 10px solid black; */
+    width: 100%;
+
+}
+::placeholder{
+    text-align: center;
+    letter-spacing: 2px;
+}
+canvas {
+    width: 100%;
+    height: 100%;
+}
+form {
+    /* border: 10px solid black; */
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    width: 90%;
+    height: 70%;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.291);
+}
+input {
+    width: 70%;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    /* padding: 20px; */
+}
+.logo, .name, .password, .submit, .question {
+    text-align: center;
+}
+
+input[type="submit"]:hover {
+    background-color: lightblue;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+}
+
+
+
+.scroll-to-form {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    background-color: #fc3d83;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 4;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media (min-width: 250px) and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .canvas-container,
+    .form-container {
+        width: 100%;
+    }
+
+    form {
+        margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    width: 100%;
+    height: 150%;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.291);
+}
+
+
+
+
+    .scroll-to-form {
+        display: block;
+    }
+
+
+}

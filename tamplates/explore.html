@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Explore | instagram{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "css/explore.css" %}">
+{% endblock stylesheet %}
+
+{% block container %}
+<div class="search">
+    <input type="search" name="search" id="SUser">
+    <button>Search</button>
+</div>
+
+<div class="buttons">
+    <button onclick="Posts()">Posts</button>
+    <button onclick="Account()">Accuonts</button>
+    <button onclick="Reels()">Reels</button>
+    <button onclick="Music()">Musics</button>
+</div>
+<hr>
+<div class="Posts" id="ps">
+    {% for post in userpost %}
+    <div class="post">
+        <div id="post_hover">
+            <img src="{% static "like.png" %}" alt="" id="like_image">
+            <p>{{ post.like_count }}</p> <!-- Access the annotated like count -->
+        </div>
+        <img src="{{ post.post_img.url }}" alt="" class="post-img">
+    </div>
+{% endfor %}
+
+</div>
+
+<div class="Accounts" id="ac">
+{% for users in  users %}
+    <div class="account">
+        <div class="profile">
+            <img src="{{users.profile.profile_image.url}}" alt="User Profile Picture">
+        </div>
+        <div class="username">
+          <a href="{% url "userprofile" users.id %}">  <p class="uname">{{users}}</p></a>
+        </div>
+        {% if users in fuser %}
+      <a href="{% url "unfollow" users.id %}">  <button class="follow-btn">Unfollow</button></a>
+      {% else %}
+      <a href="{% url "follow" users.id %}">  <button class="unfollow-btn">Follow</button></a>
+
+      {% endif %}
+
+    </div>
+    {% endfor %}
+
+</div>
+<div class="Reels" id="re">
+ <div class="video">
+    <video src=""></video>
+ </div>
+</div>
+
+<div class="Musics" id="mu">
+<h1>This Site is Under Contruction</h1>
+</div>
+{% endblock container %}
+
+{% block js %}
+
+<script src="{% static "js/explore.js" %}"></script>
+<!-- <source> -->
+
+{% endblock js %}

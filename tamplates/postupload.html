@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}upload | Instagram{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/upload_reel.css' %}">
+{% endblock stylesheet %}
+
+{% block container %}
+<div class="upload-container">
+    <h2>Upload Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="reel">Select Post:</label>
+            <input type="file" id="reel" name="post" accept="video/image">
+        </div>
+        <div class="form-group">
+            <label for="hastag">HasTage:</label>
+            <textarea  type="text" id="hastag" name="hastag" placeholder="Enter The Hatags here"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" placeholder="Write a description..."></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Upload</button>
+        </div>
+    </form>
+</div>
+{% endblock container %}
+
+{% block js %}
+<script>
+    // You can add JavaScript here if needed
+</script>
+{% endblock js %}

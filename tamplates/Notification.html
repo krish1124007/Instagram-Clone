@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Notification{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "css/notification.css" %}">
+{% endblock stylesheet %}
+
+{% block container %}
+
+<div id="notifications">
+    
+    {% for notify in notification %}
+    <div id="noty-box">
+        
+           <p> {{notify.Message}} <p>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock container %}
+
+
+
+{% block js %}
+<script>
+    let bodyClassName = localStorage.getItem('bodyclassname')
+    if (bodyClassName == 'sigma-body' || bodyClassName=='dark-body') {
+        let para = document.querySelectorAll('p');
+        para.forEach((element) => {
+            element.style.color = 'white'
+        })
+    }
+
+
+    else 
+    {
+        let para = document.querySelectorAll('p');
+        para.forEach((element) => {
+            element.style.color = 'black'
+        })
+
+    }
+</script>
+{% endblock js %}

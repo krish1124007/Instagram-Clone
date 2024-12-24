@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "css/profile.css" %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<style>
+    /* Edit Profile Container Styling */
+#editProfileContainer {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid #ddd;
+    /* height: 300px; */
+}
+
+/* Header Section */
+#editProfileHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#closeEditProfile {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+#closeEditProfile:hover {
+    background-color: #e60000;
+}
+
+/* Content Section */
+#editProfileContent {
+    display: flex;
+    flex-direction: column;
+    /* gap: 25px; */
+    justify-content: space-around;
+}
+
+#editProfileContent label {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+#editProfileContent form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#editProfileContent input[type="file"],
+#editProfileContent input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border 0.3s ease;
+}
+
+#editProfileContent input[type="file"]:hover,
+#editProfileContent input[type="text"]:hover {
+    border: 1px solid #888;
+}
+
+#editProfileContent input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: #4c6faf;
+}
+
+#editProfileContent button {
+    background: linear-gradient(135deg, #4a90e2, #007bff);
+
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#editProfileContent button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    #editProfileContainer {
+        width: 90%;
+    }
+}
+
+</style>
+{% endblock stylesheet %}
+
+{% block container %}
+
+<div id="show_Following">
+    <div id="boxHeader">
+        <button id="closeFollowing" onclick="closeFollowing()">Close</button>
+    </div>
+    <div id="listOfUsersFollowing">
+        {% for users in userFollower  %}
+        <a href="{% url "userprofile" users.follower.id %}">
+            <div class="user">
+                <p>{{users.follower}}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="show_Followers">
+    <div id="boxHeader">
+        <button id="closeFollowers" onclick="closeFollowers()">Close</button>
+    </div>
+    <div id="listOfUsersFollowers">
+        {% for users in userFollowing  %}
+        <a href="{% url "userprofile" users.following.id %}">
+            <div class="user">
+                <p>{{users.following}}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="editProfileContainer" style="display: none;">
+    <div id="editProfileHeader">
+        <button id="closeEditProfile" onclick="closeEditProfile()">Close</button>
+    </div>
+    <div id="editProfileContent">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <label for="profilePicture">Change Profile Picture:</label>
+        <input type="file" id="profilePicture" accept="image/*" name="profile">
+
+        <div>
+        <label for="privateAccount">Private Account:</label>
+        <input type="checkbox" id="privateAccount" name="isPrivet">
+        </div>
+        
+
+        <button id="saveChanges">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<div class="mainbox">
+    <div class="profile-display-box">
+        <img src="{{userProfile.profile_image.url}}" alt="">
+    </div>
+    <div class="deatails-box">
+        <div class="user-name-box">
+            <p class="username">{{request.user}}</p>
+            <button onclick="showEditProfile()">Edit Profile</button>
+        </div>
+        <div class="user-details-box">
+            
+            <div class="details">
+                <p class="post-item"><strong>post</strong></p>
+                <p class="post-number">{{userpostcount}}</p>
+            </div>
+            <div class="details" onclick="ShowFollower()">
+                <p class="follower-item">Followers</p>
+                <p class="follower-number">{{userFollowingcount}}</p>
+            </div>
+            <div class="details" onclick="ShowFollowing()">
+                <p class="following-item">Following</p>
+                <p class="following-number">{{userFollowercount}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="post-save-container">
+    <p class="post" onclick="post()">Post</p>
+    <p class="save" onclick="save()">Save</p>
+</div>
+<hr>
+<div class="Post-Container" id="pc">
+    {% for userpost in userpost  %}
+    <div class="posts">
+        <img src="{{userpost.post_img.url}}" alt="">
+    </div>
+    {% endfor %}
+</div>
+
+<div class="Save-Container" id="sc">
+    {% for save in save %}
+    <div class="saves">
+        <img src="{{save.post.post_img.url}}" alt="">
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock container %}
+
+{% block js %}
+<script>
+    const save = () => {
+        let save_container = document.getElementById("sc");
+        save_container.style.display = "flex";
+        let post_container = document.getElementById("pc");
+        post_container.style.display = "none";
+    }
+
+    const post = () => {
+        let save_container = document.getElementById("sc");
+        save_container.style.display = "none";
+        let post_container = document.getElementById("pc");
+        post_container.style.display = "flex";
+    }
+
+    function closeFollowing() {
+        let container = document.getElementById('show_Following');
+        container.style.display = 'none';
+    }
+
+    function closeFollowers() {
+        let container = document.getElementById('show_Followers');
+        container.style.display = 'none';
+    }
+
+    function ShowFollower() {
+        let container = document.getElementById('show_Followers');
+        container.style.display = 'flex';
+    }
+
+    function ShowFollowing() {
+        let container = document.getElementById('show_Following');
+        container.style.display = 'flex';
+    }
+
+    function showEditProfile() {
+        let container = document.getElementById('editProfileContainer');
+        container.style.display = 'flex';
+    }
+
+    function closeEditProfile() {
+        let container = document.getElementById('editProfileContainer');
+        container.style.display = 'none';
+    }
+</script>
+{% endblock js %}

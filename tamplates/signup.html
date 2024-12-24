@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram|Login</title>
+    <style>
+     body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    width: 100%;
+    /* borde; */
+    /* border: 10px solid rgb(211, 74, 74); */
+
+}
+.form-container {
+    /* width: 50%; */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #ffdc80, #fc3d83, #4a68ef, #3dc7fc);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    /* border: 10px solid black; */
+    width: 100%;
+
+}
+::placeholder{
+    text-align: center;
+    letter-spacing: 2px;
+}
+canvas {
+    width: 100%;
+    height: 100%;
+}
+form {
+    /* border: 10px solid black; */
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    width: 90%;
+    height: 70%;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.291);
+}
+input {
+    width: 70%;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+}
+.logo, .name, .password, .submit, .question , .email {
+    text-align: center;
+}
+
+input[type="submit"]:hover {
+    background-color: lightblue;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+}
+
+.scroll-to-form {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    background-color: #fc3d83;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 4;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media (min-width: 250px) and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .canvas-container,
+    .form-container {
+        width: 100%;
+    }
+
+    form {
+        margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    width: 100%;
+    height: 150%;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.291);
+}
+
+
+
+
+    .scroll-to-form {
+        display: block;
+    }
+
+
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="canvas-container">
+            <canvas id="three-canvas"></canvas>
+        </div>
+        <div class="form-container">
+            <form action="" method="post">
+                 {% csrf_token %}
+               
+
+                 <div class="logo">
+                    <i data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://static.cdninstagram.com/rsrc.php/v3/yW/r/cmOQpE9vFiR.png&quot;); background-position: 0px 0px; background-size: 176px 258px; width: 175px; height: 51px; background-repeat: no-repeat; display: inline-block;"></i>
+                 </div>
+                 <div class="name">
+                    <input type="text" name="username" id="" placeholder="Username">
+                 </div>
+                 <div class="email">
+                    <input type="email" name="email" id="" placeholder="Enter Email">
+                 </div>
+                 <div class="password">
+                    <input type="password" name="password" id="" placeholder="Enter Your password">
+                 </div>
+                 <div class="submit">
+                    <input type="submit" value="Register">
+                 </div>
+
+                 <div class="question">
+                    <p>You Have Account ?<a href="{% url "loginpage" %}">login</a></p>
+                 </div>
+                
+            </form>
+        </div>
+    </div>
+    <div class="container12">
+        
+        
+        <button class="scroll-to-form" onclick="scrolltoform()">Scroll</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+//         document.querySelector('.scroll-to-form').addEventListener('click', function () {
+    
+//     ).value = "up";
+// });
+
+const scrolltoform = () =>{
+    document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' })    
+    const element =  document.querySelector('.scroll-to-form')
+    element.innerHTML = "up"
+    element.removeEventListener(  'click',scrolltoform);
+    element.addEventListener('click' , uppage)
+    
+    
+}
+
+const uppage= () =>{
+    document.querySelector('.canvas-container').scrollIntoView({ behavior: 'smooth' })    
+    const element =  document.querySelector('.scroll-to-form')
+    element.innerHTML = "Scroll"
+    element.removeEventListener('click' ,  uppage);
+    element.addEventListener('click' , scrolltoform)
+    
+}
+    </script>
+    <script>
+        
+    // Basic Three.js setup
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.getElementById('three-canvas') });
+    document.querySelector('.canvas-container').appendChild(renderer.domElement);
+
+    function updateCanvasSize() {
+    if (window.innerWidth >= 250 && window.innerWidth <= 600) {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.style.height = '100%';
+    } else {
+        renderer.setSize(window.innerWidth / 2, window.innerHeight);
+        renderer.domElement.style.height = '';
+    }
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+}
+
+// Handle window resize
+window.addEventListener('resize', updateCanvasSize);
+updateCanvasSize(); // Initial call to set the correct size on load
+
+
+    // Create a gradient background for the 3D scene
+    var gradientTexture = new THREE.TextureLoader().load('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAAgAAACAAABV0R7AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPsAABq3AAACXElEQVQ4T2NkYGBgAQYBbiB8RCAwLMCAEYMGDNLEAEAAkFhBGYGIHC9HCzgCoDA8PA7ZyAAEgMSwADAAcEBAIHAGIBMAaCAmUApAA2AEAIAB5HhJoAJAB9AfYBAA4d8OHFZ+B3ZpL2F6r8CqYwMAB8i5vAzDA4c4DAAZgSEYACkF5wyPz4BDMwGAECAuJ9DNmCBhGgD4N+AEgBCEADABKkFQoI1GgBwMiDAAIGACwzAAuADswEAUgDAgOCYgAhYBAA4IYbQ9IcHUlA5EBADwDAG8AUqALFBgMBgAVAEIBkS7gW0B8OAsgJGB0C7SA3BAPbhUJYH0sXGqA2MgAIkCFUEAEBgAqA9EBhgQDiEAAQC1A8ZgEA7hQ8EO0AAELACkD/C4D4QIAEFgK4R8gCUGgEcNAICFQXEP8QMBQCAgMBzFwQCAA0AAE4MABGECBCMiCBIgDQDQbJ4SAmAE8IIAYC+B0xgFSAcEAoMEBxwQgBoAWACALFQDCAxMg0AEKRAA2VhQ+AAmQ4AAE7EF0wGABwEAAEAoMA1ZgDB8EjEAAuAowEAagBABQgA4lEAADABFAEBEBBA2gFQAAABm8A0A8cDAx2F4FGB8kTBgAQ2gDQxBkkBAAAEAAAAdQEB5UEACACEAKCAWcQiwFmgBA6AABcAEQAAECfAYIAYI2gAQAIIABiAqAAAYZCBmACwYA8AIAwNABAVAB0PEN8KPxAAcBgCCgAwAAAC8BAA4EBAAABYQBgIACYCQCAjAA8AAwAiAAMAAAMYwOMDCA1Fih9uQ8g9YgB0BEFAKIAgBAB4AKAAAGAhkEAiEI1NENkM3YX0S2EwEAoNqAAXI1AXEABAAAAcAAAPU4AAEADIFwEGgT+fAAAeAAAFgAAHAADYAAAAAYAAADAAAAAAoIAAwEAAOEAuAAAAAElFTkSuQmCC');
+    scene.background = gradientTexture;
+
+    // Add ambient light and directional light
+    var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 10, 7.5);
+    scene.add(directionalLight);
+
+    // OrbitControls setup
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
+    controls.screenSpacePanning = false;
+    controls.minDistance = 1;
+    controls.maxDistance = 10;
+
+    var model;
+    var rotationSpeed = 0.01;
+    var time = 0;
+
+    // Load GLB model
+    var loader = new THREE.GLTFLoader();
+    loader.load('{% static "instagram_3d-icon.glb" %}', function (gltf) {
+        model = gltf.scene;
+        scene.add(model);
+
+        // Adjust the position, rotation, and scale of the model
+        model.position.set(0, 0, 0);
+        model.scale.set(1, 1, 1); // Scale the model to fit within the canvas
+
+        // Get the bounding box of the model
+        var box = new THREE.Box3().setFromObject(model);
+        var size = new THREE.Vector3();
+        box.getSize(size);
+        var center = new THREE.Vector3();
+        box.getCenter(center);
+
+        // Adjust the model to be centered
+        model.position.x -= center.x;
+        model.position.y -= center.y;
+        model.position.z -= center.z;
+
+        // Set the camera position based on the size of the model
+        var maxDim = Math.max(size.x, size.y, size.z);
+        var fov = camera.fov * (Math.PI / 180);
+        var cameraZ = Math.abs(maxDim / (2 * Math.tan(fov / 2)));
+
+        camera.position.z = cameraZ;
+
+        var minZ = box.min.z;
+        var cameraToFarEdge = minZ < 0 ? -minZ + cameraZ : cameraZ - minZ;
+
+        camera.far = cameraToFarEdge * 3;
+        camera.updateProjectionMatrix();
+    }, undefined, function (error) {
+        console.error(error);
+    });
+
+    // Animation loop
+    var animate = function () {
+        requestAnimationFrame(animate);
+        if (model) {
+            // Rotate the model automatically
+            time += 0.01;
+            var speed = Math.sin(time) * 0.02 + 0.01; // Vary rotation speed
+            model.rotation.y += speed; // Rotate around the Y-axis
+            model.rotation.x += speed * 0.5; // Optional: add rotation around the X-axis
+        }
+        controls.update(); // Required if controls.enableDamping or controls.autoRotate are set to true
+        renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', updateCanvasSize);
+    updateCanvasSize(); // Initial call to set the correct size on load
+
+
+
+    </script>
+</body>
+</html>

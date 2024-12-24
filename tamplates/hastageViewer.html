@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}HashTage Viwer{% endblock title %}
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static "css/hastage.css" %}">
+
+{% endblock stylesheet %}
+
+{% block container %}
+
+<h1 style="text-align: center;">{{HashName.hastage}}</h1>
+
+<div class="Posts" id="ps">
+    {% for post in posts %}
+    <div class="post">
+        <!-- <div id="post_hover">
+            <img src="{% static "like.png" %}" alt="" id="like_image">
+            <p>{{ post.like_count }}</p> 
+        </div> -->
+        <img src="{{ post.post_img.url }}" alt="" class="post-img">
+    </div>
+{% endfor %}
+
+</div>
+
+
+{% endblock container %}
+
+{% block js %}{% endblock js %}

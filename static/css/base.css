@@ -1,0 +1,430 @@
+.sigma-body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    /* background-color: #2c67ae; */
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    background-image: url('https://wallpaperaccess.com/full/11868.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+}
+
+.love-body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+    background-image: linear-gradient(rgb(136, 56, 196), rgb(155, 34, 203), rgb(193, 28, 155));
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-attachment: fixed;
+    animation-name: love;
+    animation-duration: 10s;
+    /* Removed the space between 10 and s */
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes love {
+    0% {
+        background-image: linear-gradient(135deg, rgb(117, 64, 158), rgb(163, 14, 222), rgb(136, 71, 120));
+    }
+
+    5% {
+        background-image: linear-gradient(135deg, rgb(127, 60, 170), rgb(159, 24, 215), rgb(144, 67, 138));
+    }
+
+    10% {
+        background-image: linear-gradient(135deg, rgb(136, 56, 196), rgb(155, 34, 203), rgb(193, 28, 155));
+    }
+
+    15% {
+        background-image: linear-gradient(135deg, rgb(123, 62, 174), rgb(159, 22, 218), rgb(162, 47, 160));
+    }
+
+    20% {
+        background-image: linear-gradient(135deg, rgb(110, 68, 142), rgb(163, 17, 221), rgb(212, 38, 171));
+    }
+
+    25% {
+        background-image: linear-gradient(135deg, rgb(134, 58, 180), rgb(155, 32, 210), rgb(202, 33, 145));
+    }
+
+    30% {
+        background-image: linear-gradient(135deg, rgb(173, 56, 196), rgb(147, 34, 203), rgb(193, 28, 119));
+    }
+
+    35% {
+        background-image: linear-gradient(135deg, rgb(192, 47, 173), rgb(150, 33, 207), rgb(164, 31, 137));
+    }
+
+    40% {
+        background-image: linear-gradient(135deg, rgb(212, 38, 171), rgb(193, 28, 155), rgb(136, 56, 196));
+    }
+
+    45% {
+        background-image: linear-gradient(135deg, rgb(184, 42, 155), rgb(173, 31, 172), rgb(163, 42, 176));
+    }
+
+    50% {
+        background-image: linear-gradient(135deg, rgb(155, 34, 203), rgb(136, 56, 196), rgb(163, 17, 221));
+    }
+
+    55% {
+        background-image: linear-gradient(135deg, rgb(169, 39, 191), rgb(149, 35, 204), rgb(186, 27, 167));
+    }
+
+    60% {
+        background-image: linear-gradient(135deg, rgb(136, 56, 196), rgb(193, 28, 119), rgb(212, 38, 171));
+    }
+
+    65% {
+        background-image: linear-gradient(135deg, rgb(155, 46, 183), rgb(163, 31, 171), rgb(182, 34, 144));
+    }
+
+    70% {
+        background-image: linear-gradient(135deg, rgb(193, 28, 155), rgb(163, 14, 222), rgb(110, 68, 142));
+    }
+
+    75% {
+        background-image: linear-gradient(135deg, rgb(172, 40, 159), rgb(150, 41, 204), rgb(140, 66, 170));
+    }
+
+    80% {
+        background-image: linear-gradient(135deg, rgb(155, 34, 203), rgb(173, 56, 196), rgb(136, 71, 120));
+    }
+
+    85% {
+        background-image: linear-gradient(135deg, rgb(145, 44, 192), rgb(165, 45, 200), rgb(167, 50, 152));
+    }
+
+    90% {
+        background-image: linear-gradient(135deg, rgb(163, 14, 222), rgb(110, 68, 142), rgb(136, 56, 196));
+    }
+
+    95% {
+        background-image: linear-gradient(135deg, rgb(140, 57, 180), rgb(157, 34, 212), rgb(153, 62, 164));
+    }
+
+    100% {
+        background-image: linear-gradient(135deg, rgb(117, 64, 158), rgb(193, 28, 155), rgb(136, 56, 196));
+    }
+}
+
+
+
+
+
+.dark-body {
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    background-color: #121212;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+}
+
+.danger-body {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #b00;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+}
+
+.simple-body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background-color: #f5f5f5;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 400;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+.Container {
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+nav {
+
+    width: 5%;
+    box-shadow: 2px 2px 10px;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.457);
+
+}
+
+.inner-Container {
+    margin-left: 5%;
+    width: 95%;
+
+}
+
+
+li {
+    list-style: none;
+    text-align: center;
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* border: 2px solid black; */
+    height: 100vh;
+}
+
+.profile-photo {
+    /* border: 1px solid purple; */
+    width: 50%;
+    height: 100%;
+    border-radius: 42px;
+}
+
+.profile-photo img {
+    border: 1px solid transparent;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-form {
+
+    z-index: 5000;
+    display: none;
+    width: 300px;
+    margin-left: 80px;
+    position: fixed;
+    top: 45%;
+    background-color: transparent;
+
+}
+
+.post-form ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.post-form li {
+    height: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 3px;
+    background-color: rgba(255, 255, 255, 0.679);
+
+}
+
+.post-form li:hover {
+    background-color: #007bff;
+
+    color: white;
+}
+
+.post-form li:hover a {
+    color: white;
+}
+
+.mode-changer {
+    z-index: 3;
+    display: none;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    justify-content: flex-start;
+    position: fixed;
+    left: 100px;
+    height: 100%;
+}
+
+.btn1 {
+    background: linear-gradient(135deg, #9aa4b0, #a4aab0);
+    color: black;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+
+}
+
+.btn1:hover {
+    background: linear-gradient(135deg, #545659, #c8cfd6);
+
+
+}
+
+.btn2 {
+    background: linear-gradient(135deg, #323233, #000000);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+}
+
+.btn2:hover {
+    background: linear-gradient(135deg, #000000, #2c2b2b);
+    color: white;
+
+}
+
+.btn3 {
+    background: linear-gradient(135deg, #824ae2, #c11ab1);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+}
+
+.btn4 {
+    background: linear-gradient(135deg, #ad561c, #c80e0b);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+}
+
+.btn4:hover {
+    background: linear-gradient(135deg, #cb5b11, #e70f0c);
+
+}
+
+.btn5 {
+    background: linear-gradient(135deg, #22c2c5, #c80e0b);
+
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+}
+
+.bt:hover {
+    background-color: white;
+    color: black;
+}
+
+@media (min-width:250px) and (max-width:600px) {
+    /* .instagram-logo {
+        display: none;
+    } */
+
+    .instagram-like {
+        display: none;
+    }
+
+    .instagram-message {
+        display: none;
+        margin: 0px;
+    }
+
+    .Container {
+        /* border: 1px solid black; */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-photo {
+        border: 1px solid purple;
+        /* width: 30%; */
+        height: 5%;
+    }
+
+    .inner-Container {
+
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .post-form {
+
+        display: none;
+        width: 200px;
+
+        margin-left: 30px;
+
+        position: fixed;
+        top: 45%;
+
+        background-color: transparent;
+
+    }
+
+    ul {
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        /* border: 2px solid black; */
+        height: 98vh;
+    }
+
+    nav {
+        /* border: 1px solid olivedrab; */
+        width: 100%;
+        height: 5%;
+        position: fixed;
+        bottom: 0px;
+        padding: 5px;
+        z-index: 2;
+        background-color: white;
+    }
+
+    .mode-changer{
+        z-index: 3;
+    display: none;
+    flex-direction: column;
+    /* border: 1px solid red; */
+
+    justify-content:flex-end;
+    position: fixed;
+    left: 30px;
+    bottom: 80px;
+    height: 100%;
+    }
+}
